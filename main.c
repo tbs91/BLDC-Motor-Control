@@ -1,7 +1,7 @@
 #include "stm32f4xx.h"
 #include "stdbool.h"
 
-#define GPIOAEN		(1UL<<0)
+//#define GPIOAEN		(1UL<<0)
 #define UART2EN		(1UL<<17)
 #define SYS_FREQ	16000000
 #define APB1_CLK	SYS_FREQ
@@ -138,7 +138,7 @@ void uart2_txrx_init(void)
 	/******** Configure UART GPIO pins ***********/
 
 	// Enable clock access to GPIOA
-	RCC->AHB1ENR |= GPIOAEN;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
 
 	// Set PA2 to alternate function mode
 	GPIOA->MODER &= ~(1U<<4);
